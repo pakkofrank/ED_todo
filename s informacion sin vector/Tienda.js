@@ -5,11 +5,11 @@ export default class Tienda {
         this._ultimoProducto = null;
     }
     _agregar(objproducto) {
-        if(this._primerProducto == null){
+        if (this._primerProducto == null) {
             this._primerProducto = objproducto;
             this._ultimoProducto = objproducto;
-        }else{
-            let p = this._ultimoProducto;
+        } else {
+
             this._ultimoProducto._siguiente = objproducto;
             this._ultimoProducto = objproducto;
         }
@@ -23,32 +23,38 @@ export default class Tienda {
         this._tabla.innerHTML = "";
         let nuevo = this._primerProducto;
 
-            while (nuevo != null) {
-                let row = this._tabla.insertRow(-1);
+        while (nuevo != null) {
+            let row = this._tabla.insertRow(-1);
 
-                row.insertCell(0).innerHTML = nuevo.codigo;
-                row.insertCell(1).innerHTML = nuevo.nombre;
-                row.insertCell(2).innerHTML = nuevo.precio;
-                row.insertCell(3).innerHTML = nuevo.cantidad;
-                row.insertCell(4).innerHTML = nuevo.descripcion;
-                row.insertCell(5);
-                this._btnEliminar(row, producto);
-                
-                nuevo = nuevo.siguiente;
-            }
+            row.insertCell(0).innerHTML = nuevo.codigo;
+            row.insertCell(1).innerHTML = nuevo.nombre;
+            row.insertCell(2).innerHTML = nuevo.precio;
+            row.insertCell(3).innerHTML = nuevo.cantidad;
+            row.insertCell(4).innerHTML = nuevo.descripcion;
+
+            nuevo = nuevo.siguiente;
+        }
     }
 
-        _buscarProducto(codigo) {
-            let nuevo1 = this._primerProducto;
+    _buscarProducto(codigo) {
+        let nuevo1 = this._primerProducto;
 
-            while(nuevo1 != null){
-                if(nuevo1.codigo == codigo){
-                    return nuevo1;
-                }
-                nuevo1 = nuevo1.siguiente;
+        while (nuevo1 != null) {
+            if (nuevo1.codigo == codigo) {
+                return nuevo1;
             }
-    
-           
+            nuevo1 = nuevo1.siguiente;
+        }
+
+
+    }
+
+    _buscarAnterior(codigo){
+        let b = this._primerProducto;
+        while(b.siguiente.codigo != codigo){
+            return b;
+        }
+        b = b.siguiente;
     }
 
 
@@ -61,14 +67,14 @@ export default class Tienda {
         })
     }
 
-    _btnEliminar(row, producto){
+    _btnEliminar(row, producto) {
         let btnEliminar = document.createElement("input");
         btnEliminar.value = "Eliminar";
         btnEliminar.type = "button";
         btnEliminar.className = "btn btn-danger";
         btnEliminar.id = "btnEliminar";
 
-        btnEliminar.addEventListener("click", ()=>{
+        btnEliminar.addEventListener("click", () => {
             let p = new Tienda();
             p._eliminarProducto(row, producto)
         });
@@ -79,20 +85,26 @@ export default class Tienda {
 
 
 
-    _eliminarProducto(row, articulo){
-        Swal.fire({
-            type: "question",
-            title: "¿Deseas eliminar al contacto?",
-            text: articulo.codigo,
-            showCancelButton: true,
-            confirmButtonText: "Sí",
-            cancelButtonText: "No"
-        }).then(result => {
-            if (result.value) {
-                let r = this._buscarProducto(codigo);
-            }
-        });
+    _eliminarProducto(row, producto) {
+        let r = this._buscarProducto(producto.codigo);
+      if(r == this._primerProducto){
+        this._primerProducto = r.siguiente;
       }
+      else{
+        let r2 = this._buscarAnterior(producto.codigo);
+
+        r2.siguiente = r2.siguiente;
+      }
+      
+      console.log(this._primerProducto);
+      row.remove();
+         
+    }
+    _invertir(producto){
+        let u = this._ultimoProducto;
+        let a = u._buscarAnterior(producto.codigo);
+
+    }
 
 
 }

@@ -6,7 +6,7 @@ export default class Producto {
         this._cantidad = objproducto.cantidad;
         this._descripcion = objproducto.descripcion;
         this._siguiente = null;
-        this._anterior = null;
+       
 
     }
     get codigo() {

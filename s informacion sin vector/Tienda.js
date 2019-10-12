@@ -5,15 +5,15 @@ export default class Tienda {
         this._ultimoProducto = null;
     }
     _agregar(objproducto) {
-        if(this._primerProducto == null) {
+        if(this._primerProducto == null){
             this._primerProducto = objproducto;
             this._ultimoProducto = objproducto;
         }else{
             let p = this._ultimoProducto;
-            this._ultimoProducto.siguiente = objproducto;
+            this._ultimoProducto._siguiente = objproducto;
             this._ultimoProducto = objproducto;
-            this._ultimoProducto.anterior = p;
         }
+        this.actualizarTabla;
         console.log(this._primerProducto);
 
     }
@@ -21,7 +21,7 @@ export default class Tienda {
 
     actualizarTabla() {
         this._tabla.innerHTML = "";
-        let nuevo = this._ultimoProducto;
+        let nuevo = this._primerProducto;
 
             while (nuevo != null) {
                 let row = this._tabla.insertRow(-1);
@@ -31,23 +31,12 @@ export default class Tienda {
                 row.insertCell(2).innerHTML = nuevo.precio;
                 row.insertCell(3).innerHTML = nuevo.cantidad;
                 row.insertCell(4).innerHTML = nuevo.descripcion;
-
+                row.insertCell(5);
+                this._btnEliminar(row, producto);
+                
                 nuevo = nuevo.siguiente;
-
             }
     }
-
-    _imprimirArticuloEncontrado(producto,index){
-        index.innerHTML = ""
-        index.innerHTML += `
-        Codigo: ${producto.codigo} <br>
-        Nombre: ${producto.nombre} <br>
-        Precio: ${producto.precio} <br>
-        Contenido: ${producto.contenido}gr <br>
-        Descripcion: ${producto.descripcion}`
-
-    }
-
 
         _buscarProducto(codigo) {
             let nuevo1 = this._primerProducto;
@@ -72,7 +61,7 @@ export default class Tienda {
         })
     }
 
-    /*_addBtnEliminar(row, producto){
+    _btnEliminar(row, producto){
         let btnEliminar = document.createElement("input");
         btnEliminar.value = "Eliminar";
         btnEliminar.type = "button";
@@ -86,10 +75,9 @@ export default class Tienda {
         row.cells[5].innerHTML = "";
         row.cells[5].appendChild(btnEliminar);
 
-    }*/
+    }
 
 
-    /*
 
     _eliminarProducto(row, articulo){
         Swal.fire({
@@ -101,12 +89,10 @@ export default class Tienda {
             cancelButtonText: "No"
         }).then(result => {
             if (result.value) {
-                let r = this._buscarProducto(articulo.codigo);
-                this._vector.splice(r, 1);
-                row.remove();
+                let r = this._buscarProducto(codigo);
             }
         });
-      }*/
+      }
 
 
 }

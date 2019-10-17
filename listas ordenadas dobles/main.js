@@ -1,9 +1,9 @@
-import Productos from "./Productos.js";
-import Tienda from "./Tienda.js";
+import Articulo from "./Articulo.js";
+import Inventario from "./Inventario.js";
 
 class Main {
     constructor() {
-        let tienda = new Tienda(document.querySelector("#tabla"));
+        let inventario = new Inventario(document.querySelector("#tabla"));
 
         document.querySelector("#agregar").addEventListener('click', () => {
             let codigo = Number(document.querySelector("#codigo").value);
@@ -21,18 +21,20 @@ class Main {
 
             }
 
-            let producto = new Productos(objProducto);
-            tienda.agregarProducto(producto);
-            tienda.actualizarTabla();
+            let articulo = new Articulo(objProducto);
+            inventario.agregarArticulo(articulo);
+            inventario.actualizarTabla();
 
             
         });
 
-        document.querySelector("#agregar").addEventListener('click', () => {
-            
-
-            
+        document.querySelector("#btnEliminar").addEventListener('click', () => {
+            inventario.eliminar(document.querySelector("#codigoE").value);
+        
+               
         });
+
+        
 
 
         function eliminar() {
@@ -46,7 +48,6 @@ class Main {
             }
             document.querySelector("#lista").innerHTML = inventario.toString();
         }
-        
     }
 }
 

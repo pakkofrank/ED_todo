@@ -31,6 +31,7 @@ export default class Tienda {
             row.insertCell(2).innerHTML = nuevo.precio;
             row.insertCell(3).innerHTML = nuevo.cantidad;
             row.insertCell(4).innerHTML = nuevo.descripcion;
+            row.insertCell(5) = this._btnEliminar()
 
             nuevo = nuevo.siguiente;
         }
@@ -83,6 +84,35 @@ export default class Tienda {
 
     }
 
+    eliminar(codigo){
+		var actual = this._primero;
+		if (this._primero.codigo == codigo) {
+			if (!this._primero.siguiente) {
+				this._primero = null;
+				this._ultimo = null;
+			}else{
+				this._primero = this._primero.siguiente;
+			}
+			return true;
+		}else{
+			while(actual.siguiente && actual.siguiente.codigo != codigo){
+				actual = actual.siguiente;
+			}
+			if (actual) {
+				if (actual.siguiente == this._ultimo) {
+					actual.siguiente = null;
+				}else{
+					actual.siguiente = actual.siguiente.siguiente;
+				}
+				return true;
+			}else{
+				return null;
+			}
+		}
+
+
+	}
+
 
 
     _eliminarProducto(row, producto) {
@@ -93,13 +123,14 @@ export default class Tienda {
       else{
         let r2 = this._buscarAnterior(producto.codigo);
 
-        r2.siguiente = r2.siguiente;
+        r2.siguiente = r1.siguiente;
       }
       
       console.log(this._primerProducto);
       row.remove();
          
     }
+
     _invertir(producto){
         let u = this._ultimoProducto;
         let a = u._buscarAnterior(producto.codigo);

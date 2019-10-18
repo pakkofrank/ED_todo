@@ -17,34 +17,24 @@ export default class Inventario {
             this._ultimo.anterior = anterior;
         }
         console.log(this._primero);
+        this.actualizarTabla();
     }
 
 
-    actualizarTabla(articulo) {
-        let row = this._tabla.insertRow(-1);
-        let celdaCodigo = row.insertCell(0);
-        let celdaNombre = row.insertCell(1);
-        let celdaPrecio = row.insertCell(2);
-        let celdaCantidad = row.insertCell(3);
-        let celdaDescripcion = row.insertCell(4);
-        row.insertCell(5);
+    actualizarTabla() {
+        this._tabla.innerHTML = "";
+        let nuevo = this._primero;
 
+        while (nuevo != null) {
+            let row = this._tabla.insertRow(-1);
 
-        celdaCodigo.innerHTML = articulo.codigo;
-        celdaNombre.innerHTML = articulo.nombre;
-        celdaPrecio.innerHTML = articulo.precio;
-        celdaCantidad.innerHTML = articulo.cantidad;
-        celdaDescripcion.innerHTML = articulo.descripcion;
-        this._btnEliminar(row, articulo);
-
-        let objArticulo = {
-            codigo: articulo.codigo,
-            nombre: articulo.nombre,
-            precio: articulo.precio,
-            cantidad: articulo.cantidad,
-            descipcion: articulo.descripcion
-        };
-        return objArticulo;
+            row.insertCell(0).innerHTML = nuevo.codigo;
+            row.insertCell(1).innerHTML = nuevo.nombre;
+            row.insertCell(2).innerHTML = nuevo.precio;
+            row.insertCell(3).innerHTML = nuevo.cantidad;
+            row.insertCell(4).innerHTML = nuevo.descripcion;
+            nuevo = nuevo.siguiente;
+        }
     }
 
     _btnEliminar(row, articulo) {
@@ -79,7 +69,7 @@ export default class Inventario {
         invertir(){
             let u = this._ultimo;
             while(u !== null){
-                console.log('invertido ' + u.codigo);
+                console.log('invertido chido ' + u.codigo);
                 u = u.anterior;  
             }
         }

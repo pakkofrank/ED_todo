@@ -24,32 +24,23 @@
                 <form id="form" class="col-10 needs-validation chido" novalidate>
                     <div class="form-group">
                         <label for="codigo">codigo</label>
-                        <input type="number" placeholder="-----" id="codigo" class="form-control" required>
-                        <div class="valid-feedback">correcto</div>
-                        <div class="invalid-feedback">introduzca un</div>
+                        <input type="number" placeholder="-----" id="codigo" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" placeholder="name" id="nombre" class="form-control" required>
-                        <div class="invalid-feedback">campo obligatorio</div>
+                        <input type="text" placeholder="name" id="nombre" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="sueldo">precio</label>
                         <input type="number" placeholder="$0" id="precio" class="form-control">
-                        <div class="valid-feedback"> correcto</div>
-                        <div class="invalid-feedback">campo obligatorio</div>
                     </div>
                     <div class="form-group">
                         <label for="cantidad">cantidad</label>
                         <input type="number" id="cantidad" class="form-control">
-                        <div class="valid-feedback"> correcto</div>
-                        <div class="invalid-feedback">campo obligatorio</div>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">descripcion</label>
                         <input type="text" id="descripcion" class="form-control">
-                        <div class="valid-feedback"> correcto</div>
-                        <div class="invalid-feedback">campo obligatorio</div>
                     </div>
                     <button id="agregar" type="button" class="btn btn-primary">
                         Agregar
@@ -57,22 +48,11 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-3">
-			<h1>ELIMINAR</h1>
-			<table>
-				<tr>
-					<td><label>Código:</label></td>
-					<td><input type="number" id="codigoE"></td>
-				</tr>
-			</table>
-			<button id="btnEliminar" type="button">ELIMINAR</button>
-		</div>
         <!-- Tabla -->
         <div class="col-md-8" style="overflow: auto;height:300px">
             <table class="table table-hover table-dark">
                 <thead>
                     <tr>
-
                         <th scope="col">codigo</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">precio</th>

@@ -23,8 +23,8 @@ class Main {
 
             let articulo = new Articulo(objArticulo);
             inventario.agregar(articulo);
-            inventario.actualizarTabla();
             inventario.invertir(articulo);
+            inventario.actualizarTabla();
             
         });
     }

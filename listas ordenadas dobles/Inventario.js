@@ -7,12 +7,12 @@ export default class Inventario {
     }
 
     agregar(articulo) {
-        if (this._primero = null) {
+        if (this._primero == null) {
             this._primero = articulo;
             this._ultimo = articulo;
         } else {
             let anterior = this._ultimo;
-            this._ultimo.siguiente = articulo;
+            this._ultimo._siguiente = articulo;
             this._ultimo = articulo;
             this._ultimo.anterior = anterior;
         }
@@ -75,7 +75,7 @@ export default class Inventario {
         row.remove();
        
         }
-        
+
         invertir(){
             let u = this._ultimo;
             while(u !== null){

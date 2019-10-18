@@ -5,8 +5,8 @@ export default class Articulo {
         this._precio = articulo.precio;
         this._cantidad = articulo.cantidad;
         this._descripcion = articulo.descripcion;
-        this._siguiente = null;
         this._anterior = null;
+        this._siguiente = null;
     }
     get codigo() {
         return this._codigo;
@@ -23,16 +23,13 @@ export default class Articulo {
     get descripcion() {
         return this._descripcion;
     }
-    get siguiente(){
-        return this._siguiente;
-    }
-    set siguiente(siguiente){
-        this._siguiente = siguiente;
-    }
     get anterior() {
         return this._anterior;
     }
     set anterior(anterior){
         this._anterior = anterior;
+    }
+    get siguiente(){
+        return this._siguiente;
     }
 }

@@ -12,7 +12,7 @@ class Main {
             let cantidad = Number(document.querySelector("#cantidad").value);
             let descripcion = document.querySelector("#descripcion").value;
 
-            let objProducto = {
+            let objArticulo = {
                 codigo: codigo,
                 nombre: nombre,
                 precio: precio,
@@ -21,33 +21,12 @@ class Main {
 
             }
 
-            let articulo = new Articulo(objProducto);
-            inventario.agregarArticulo(articulo);
+            let articulo = new Articulo(objArticulo);
+            inventario.agregar(articulo);
             inventario.actualizarTabla();
-
+            inventario.invertir(articulo);
             
         });
-
-        document.querySelector("#btnEliminar").addEventListener('click', () => {
-            inventario.eliminar(document.querySelector("#codigoE").value);
-        
-               
-        });
-
-        
-
-
-        function eliminar() {
-            var cod = document.querySelector("#txtCodigoE").value;
-            var x = inventario.eliminar(cod)
-        
-            if (x) {
-                document.querySelector("#actividad").innerHTML += "Articulo eliminado<br>";
-            }else{
-                document.querySelector("#actividad").innerHTML += "No se encontro<br>";
-            }
-            document.querySelector("#lista").innerHTML = inventario.toString();
-        }
     }
 }
 

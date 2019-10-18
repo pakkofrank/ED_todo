@@ -1,4 +1,4 @@
-export default class Producto {
+export default class Articulo {
     constructor(articulo) {
         this._codigo = articulo.codigo;
         this._nombre = articulo.nombre;
@@ -7,8 +7,6 @@ export default class Producto {
         this._descripcion = articulo.descripcion;
         this._siguiente = null;
         this._anterior = null;
-       
-
     }
     get codigo() {
         return this._codigo;
@@ -25,10 +23,16 @@ export default class Producto {
     get descripcion() {
         return this._descripcion;
     }
-    get siguiente() {
+    get siguiente(){
         return this._siguiente;
+    }
+    set siguiente(siguiente){
+        this._siguiente = siguiente;
     }
     get anterior() {
         return this._anterior;
+    }
+    set anterior(anterior){
+        this._anterior = anterior;
     }
 }

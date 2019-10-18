@@ -27,6 +27,13 @@ class Main {
             inventario.actualizarTabla();
             
         });
+        document.querySelector("#btnEliminar").addEventListener('click', () =>{
+            let eliminar = document.querySelector("#codigoE").value;
+            inventario.eliminarArticulo(eliminar);
+
+        })
+
+        
     }
 }
 

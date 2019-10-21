@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>s</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="diseño.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body id="fondo" class="chido2">
+    <div class="p-5  titulo">
+        <h1>sistema de informacion</h1>
+    </div><br>
+    <div class="row justify-content-between">
+        <!-- Formulario -->
+        <div class="col-md-3">
+            <div class="row justify-content-between">
+                <form id="form" class="col-10 needs-validation chido" novalidate>
+                    <div class="form-group">
+                        <label for="codigo">codigo</label>
+                        <input type="number" placeholder="-----" id="codigo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" placeholder="name" id="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sueldo">precio</label>
+                        <input type="number" placeholder="$0" id="precio" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad">cantidad</label>
+                        <input type="number" id="cantidad" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">descripcion</label>
+                        <input type="text" id="descripcion" class="form-control">
+                    </div>
+                    <button id="agregar" type="button" class="btn btn-primary">
+                        Agregar
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3">
+			<h1>ELIMINAR</h1>
+			<table>
+				<tr>
+					<td><label>Código:</label></td>
+					<td><input type="number" id="codigoE"></td>
+				</tr>
+			</table>
+			<button id="btnEliminar" type="button">ELIMINAR</button>
+		</div>
+        <!-- Tabla -->
+        <div class="col-md-8" style="overflow: auto;height:300px">
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">precio</th>
+                        <th scope="col">cantidad</th>
+                        <th scope="col">descripcion</th>
+                        <th scope="col">accion</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla"></tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</body>
+
+</html>

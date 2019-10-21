@@ -27,7 +27,6 @@ export default class Inventario {
 
         while (nuevo != null) {
             let row = this._tabla.insertRow(-1);
-
             row.insertCell(0).innerHTML = nuevo.codigo;
             row.insertCell(1).innerHTML = nuevo.nombre;
             row.insertCell(2).innerHTML = nuevo.precio;
@@ -37,33 +36,27 @@ export default class Inventario {
         }
     }
 
-    _btnEliminar(row, articulo) {
-        let btnEliminar = document.createElement("input");
-        btnEliminar.value = "Eliminar";
-        btnEliminar.type = "button";
-        btnEliminar.className = "btn btn-danger";
-        btnEliminar.id = "btnEliminar";
+    eliminarArticulo(codigo) {
+        let b = this._buscarArticulo(codigo);
 
-        btnEliminar.addEventListener("click", () => { 
-            this.eliminarArticulo(row, articulo)
-        });
-        row.cells[5].innerHTML = "";
-        row.cells[5].appendChild(btnEliminar);
+        if(b == this._primero){
+            if(b.siguiente){
+                this._primero = b.siguiente;
+                this._primero.anterior = null;
+            }else{
+                this._primero = null;
+                this._ultimo = null;
+            }
+        }else if(b == this._ultimo){
+            this._ultimo = b.anterior;
+            this._ultimo.siguiente = null;
 
-    }
-
-    eliminarArticulo(row, articulo) {
-        let a = this._buscarArticulo(articulo.codigo);
-        if(a == this._primero){
-            this._primero = a.siguiente;
         }else{
-            let b = this._buscarArticulo(articulo.codigo);
-            a.siguiente.anterior = b;
-            b.siguiente = a.siguiente;
+            b.siguiente.anterior = b.anterior;
+            b.anterior.siguiente = b.siguiente;
         }
         console.log(this._primero);
-        row.remove();
-       
+        this.actualizarTabla();   
         }
 
         invertir(){
@@ -73,8 +66,6 @@ export default class Inventario {
                 u = u.anterior;  
             }
         }
-       
-
 
     _buscarArticulo(codigo) {
         let b = this._primero;
@@ -82,10 +73,5 @@ export default class Inventario {
             b = b.siguiente;
         }
         return b;
-
     }
-
-    
-
-
 }

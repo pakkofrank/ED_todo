@@ -1,0 +1,38 @@
+#tablero{
+	width: 600px;
+}
+#iniciar{
+	background: radial-gradient(#00FFB9,#037C5B);
+	width: 100px;
+	height: 40px;
+}
+#iniciar:hover{
+	background: radial-gradient(#00AAFF,#045076);
+	cursor: pointer;
+}
+
+#texto{
+	width: 50%;
+	padding: 0px;
+	padding-bottom: 30px;
+	margin-left: 605px;
+	margin-top: -603px;
+}
+
+
+#proceso{
+	width: 50%;
+	padding: 0px;
+	margin-left: 605px;
+	margin-top: -320px;
+	background: #E9DAFA;
+	position: relative;
+	border: 3px solid;
+	margin-top: 10px;
+	height: 350px;	
+}
+
+#pro{
+	margin-left: 610px;
+	font-size: 25px;
+}

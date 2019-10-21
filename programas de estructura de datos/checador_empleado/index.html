@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+</head>
+<body>
+	<div>
+        <label>hora de entrada</label>
+        <input type="number" name="eHoras" id="eHoras" min="0" max="24">
+        <label>:</label> 
+        <input type="number" name="eMinutos" id="eMinutos" min="0" max="60">
+        <label>:</label> 
+        <input type="number" name="eSegundos" id="eSegundos" min="0" max="60">  
+    </div>
+    <div>
+            <label>hora de salida</label> 
+        <input type="number" name="sHoras" id="sHoras" min="0" max="24"> 
+        <label>:</label> 
+        <input type="number" name="sMinutos" id="sMinutos" min="0" max="60">
+        <label>:</label> 
+        <input type="number" name="sSegundos" id="sSegundos" min="0" max="60">  
+    </div>
+    <div>
+        <button type="button" id="btn" name="btn">aceptar</button>
+	</div>
+	<div id="resultado"></div>
+
+</body>
+<script src="main.js"></script>
+</html>
